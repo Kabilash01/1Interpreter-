@@ -1,13 +1,45 @@
-# requirements.txt
-GitPython
-pylint
-bandit
-radon
-pytest
-pytest-cov
-docker
-diskcache
-rich
+# 1INTERPRETER Requirements
+# AI-Powered DevOps Automation Platform
+
+# Core UI and Terminal Interface
+rich>=13.0.0
+prompt_toolkit>=3.0.36
+
+# AI and LLM Integration
+requests>=2.31.0
+
+# Git Operations  
+GitPython>=3.1.31
+
+# Code Analysis and Quality
+pylint>=2.17.0
+bandit>=1.7.5
+radon>=6.0.1
+
+# Testing Framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Container Management
+docker>=6.1.0
+
+# Performance and Caching
+diskcache>=5.6.0
+
+# File Processing
+pathlib2>=2.3.7
+
+# Development Tools
+black>=23.0.0
+flake8>=6.0.0
+
+# Optional: Enhanced Security
+# safety>=2.3.0
+# semgrep>=1.0.0
+
+# Optional: Local LLM Support
+# ollama>=0.1.0
+# transformers>=4.30.0
 prompt_toolkit
 requests
 python-dotenv

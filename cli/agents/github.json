@@ -1,0 +1,68 @@
+{
+  "name": "github",
+  "type": "devops_pipeline",
+  "repository": "https://github.com/Kabilash01/RHINO--training.git",
+  "created": "1753192962.691775",
+  "pipeline_results": {
+    "clone": {
+      "command": "clone",
+      "success": true,
+      "output": "\u2705 Clone completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0050323009490967,
+      "files_created": []
+    },
+    "analyze": {
+      "command": "analyze",
+      "success": true,
+      "output": "\u2705 Analyze completed successfully (simulated)",
+      "error": "",
+      "duration": 2.005589246749878,
+      "files_created": []
+    },
+    "tests": {
+      "command": "tests",
+      "success": true,
+      "output": "\u2705 Tests completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0048141479492188,
+      "files_created": []
+    },
+    "docker": {
+      "command": "docker",
+      "success": false,
+      "output": "",
+      "error": "'charmap' codec can't encode character '\\U0001f680' in position 75: character maps to <undefined>",
+      "duration": 2.011465072631836,
+      "files_created": []
+    },
+    "deploy": {
+      "command": "deploy",
+      "success": true,
+      "output": "\u2705 Deploy completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0060036182403564,
+      "files_created": []
+    },
+    "optimize": {
+      "command": "optimize",
+      "success": true,
+      "output": "\u2705 Optimize completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0059444904327393,
+      "files_created": []
+    }
+  },
+  "capabilities": [
+    "repository_cloning",
+    "code_analysis",
+    "test_generation",
+    "docker_containerization",
+    "application_deployment",
+    "code_optimization"
+  ],
+  "status": "completed",
+  "total_steps": 6,
+  "successful_steps": 5,
+  "summary_folder": "pipeline_summaries\\github"
+}

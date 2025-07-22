@@ -1,0 +1,7 @@
+Step,Success,Duration(s),Output_Length,Error_Length
+clone,True,2.01,42,0
+analyze,True,2.01,44,0
+tests,True,2.00,42,0
+docker,False,2.01,0,97
+deploy,True,2.01,43,0
+optimize,True,2.01,45,0

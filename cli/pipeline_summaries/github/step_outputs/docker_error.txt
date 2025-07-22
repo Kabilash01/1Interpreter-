@@ -1,0 +1,6 @@
+=== DOCKER ERROR ===
+Timestamp: 2025-07-22_19-32-42
+Duration: 2.01s
+==================================================
+
+'charmap' codec can't encode character '\U0001f680' in position 75: character maps to <undefined>
