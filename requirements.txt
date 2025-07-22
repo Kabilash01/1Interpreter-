@@ -1,0 +1,16 @@
+# requirements.txt
+GitPython
+pylint
+bandit
+radon
+pytest
+pytest-cov
+docker
+diskcache
+rich
+prompt_toolkit
+requests
+python-dotenv
+PyYAML
+markdown2
+fpdf

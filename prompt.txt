@@ -1,0 +1,175 @@
+"""
+🎯 Project: Auto-Dock It! — Automated DevOps Agent with LLM-Powered Containerization
+
+🧠 Objective:
+Build a terminal-based, modular DevOps automation system in Python. This intelligent agent uses Large Language Models (LLMs) via Ollama (local) or OpenAI/Gemini (cloud) to analyze any GitHub repository and automate the containerization process end-to-end.
+
+The system simplifies developer onboarding by generating Dockerfiles, CI/CD pipelines, environment configuration files, and validation routines using intelligent code understanding and simulation.
+
+─────────────────────────────────────────────────────────────
+
+📐 System Architecture Overview
+
+1. 📁 Repository Handler
+- Clone GitHub repositories using GitPython
+- Extract ZIP archives if provided locally
+- Parse project structure: detect README.md, requirements.txt, src/, etc.
+
+2. 🧪 Static Code Analyzer
+- Use:
+  - `pylint` for linting and style issues
+  - `bandit` for security scanning
+  - `radon` for cyclomatic complexity and maintainability
+- Output as JSON and Markdown
+- Cache results with `diskcache`
+
+3. 🧠 LLM Agent Engine
+- Parses user instructions (e.g., “generate Dockerfile”)
+- Routes to tools:
+  - `test_generator`
+  - `pr_reviewer`
+  - `log_analyzer`
+  - `docker_deployer`
+  - `code_optimizer`
+  - `docker_config_generator`
+- Backend configurable via `llm_wrapper.py`
+  - Supports `OLLAMA`, `OpenAI`, or `Gemini`
+  - Set `LLM_MODE=local/cloud` in `.env`
+
+4. 🧪 Test Case Generator
+- Parses functions using `ast`
+- Generates `pytest`-based test cases via LLM
+- Saves tests in `/tests/`, validates syntax
+- Runs tests with `pytest-cov` for coverage
+
+5. 📜 PR Reviewer
+- Fetches pull request diffs using GitHub API
+- Summarizes and critiques code changes with LLM
+- Outputs structured Markdown review
+
+6. 🧼 Code Optimizer
+- Optimizes functions or files via LLM prompt (e.g., `optimize utils.py`)
+- Suggests simplification, documentation, or speedups
+
+7. 🐳 Docker Deployment Agent
+- Generates Dockerfile (if missing) using LLM based on code + stack
+- Builds the container using `docker-py`
+- Runs container locally, collects:
+  - Logs
+  - Exit status
+  - Health check results
+
+8. ⚙ Docker Config Generator
+- Generates `docker_config.yaml`:
+  - Ports, environment variables, run command
+- Used for Compose/Helm/cloud platforms
+
+9. 🧪 Container Health Validator
+- After running the Docker container:
+  - Calls `/healthz` or similar HTTP endpoint
+  - Optionally executes a health-check script inside container
+
+10. 📄 Report Exporter
+- Converts any module output (PR reviews, analysis, logs) into:
+  - Markdown
+  - PDF (`fpdf`)
+  - HTML (`markdown2`)
+- Command: `export last as pdf`
+
+11. 🔁 GitHub Automation (Optional)
+- Auto-create pull requests with `create_pull_request()`
+- `autodocker.yml`: GitHub Actions workflow that:
+  - Clones repo
+  - Auto-generates Dockerfile + config
+  - Builds image and validates health
+
+12. 🖥️ Terminal CLI Interface (MetaChain-style)
+- Built with `rich` + `prompt_toolkit`
+- Interactive CLI Modes:
+  - `user mode`: Run agent commands
+  - `agent editor`: Define new LLM chains
+  - `workflow editor`: Create multi-step DevOps flows
+- Example Commands:
+  - `summarize repo`
+  - `generate Dockerfile`
+  - `dockerize and test`
+  - `explain CI failure`
+  - `optimize file foo.py`
+  - `export report`
+
+─────────────────────────────────────────────────────────────
+
+📁 Directory Structure
+
+automated-devops-agent/
+├── backend/
+│   ├── main.py                         # CLI entrypoint
+│   ├── llm/
+│   │   └── llm_wrapper.py              # LLM backend abstraction
+│   ├── agent/
+│   │   ├── test_generator.py
+│   │   ├── pr_reviewer.py
+│   │   ├── log_analyzer.py
+│   │   ├── docker_deployer.py
+│   │   ├── code_optimizer.py
+│   │   └── docker_config_generator.py
+│   ├── utils/
+│   │   ├── github_handler.py
+│   │   ├── static_analyzer.py
+│   │   ├── test_runner.py
+│   │   └── file_utils.py
+│   ├── reports/
+│   │   └── exporter.py
+│   └── requirements.txt
+│
+├── cli/
+│   └── terminal_ui.py                 # Rich CLI interface
+├── .github/
+│   └── workflows/
+│       ├── agent_ci.yml
+│       └── autodocker.yml
+├── workspace/                         # Temp repo storage
+├── tests/                             # Generated tests
+├── config.yaml                        # Tool + agent config
+├── .env                               # Keys, LLM_MODE
+├── Dockerfile.dev                     # Dev container
+├── README.md
+└── LICENSE
+
+─────────────────────────────────────────────────────────────
+
+🧰 Tech Stack & Requirements
+
+- Python 3.10+
+- GitPython, docker, diskcache
+- pylint, bandit, radon, pytest, pytest-cov
+- requests, PyYAML, python-dotenv
+- rich, prompt_toolkit, typer (CLI)
+- markdown2, fpdf (reporting)
+- OpenAI, Gemini, or Ollama (LLM)
+
+─────────────────────────────────────────────────────────────
+
+💬 LLM Agent Commands (Sample Inputs)
+
+- `"summarize this repo"`
+- `"generate Dockerfile for this repo"`
+- `"run and validate container"`
+- `"optimize checkout.py"`
+- `"create docker_config.yaml"`
+- `"explain CI/CD error"`
+- `"submit Dockerfile as pull request"`
+- `"export last report as pdf"`
+
+─────────────────────────────────────────────────────────────
+
+✅ Deliverables
+
+- Self-contained agentic CLI DevOps assistant
+- Intelligent, reproducible Dockerfile + config generation
+- Support for local (Ollama) and cloud (OpenAI/Gemini) models
+- Interactive terminal UI
+- Static code and security audits
+- GitHub PR and CI automation
+- Fully open-source and extensible
+"""

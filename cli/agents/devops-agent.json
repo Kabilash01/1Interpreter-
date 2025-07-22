@@ -1,0 +1,12 @@
+{
+  "name": "DevOps-Agent",
+  "purpose": "Docker deployment automation",
+  "language": "Python",
+  "created": "1753173274.019772",
+  "capabilities": [
+    "code_analysis",
+    "docker_generation",
+    "test_creation",
+    "optimization"
+  ]
+}

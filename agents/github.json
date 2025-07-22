@@ -1,0 +1,61 @@
+{
+  "name": "github",
+  "type": "devops_pipeline",
+  "repository": "https://github.com/ryo-ma/github-profile-trophy.git",
+  "created": "1753174110.4744794",
+  "pipeline_results": {
+    "clone": {
+      "command": "clone",
+      "success": true,
+      "output": "\u2705 Clone completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0063343048095703
+    },
+    "analyze": {
+      "command": "analyze",
+      "success": true,
+      "output": "\u2705 Analyze completed successfully (simulated)",
+      "error": "",
+      "duration": 2.004593849182129
+    },
+    "tests": {
+      "command": "tests",
+      "success": true,
+      "output": "\u2705 Tests completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0038721561431885
+    },
+    "docker": {
+      "command": "docker",
+      "success": true,
+      "output": "\u2705 Docker completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0062053203582764
+    },
+    "deploy": {
+      "command": "deploy",
+      "success": true,
+      "output": "\u2705 Deploy completed successfully (simulated)",
+      "error": "",
+      "duration": 2.0058364868164062
+    },
+    "optimize": {
+      "command": "optimize",
+      "success": true,
+      "output": "\u2705 Optimize completed successfully (simulated)",
+      "error": "",
+      "duration": 2.005723476409912
+    }
+  },
+  "capabilities": [
+    "repository_cloning",
+    "code_analysis",
+    "test_generation",
+    "docker_containerization",
+    "application_deployment",
+    "code_optimization"
+  ],
+  "status": "completed",
+  "total_steps": 6,
+  "successful_steps": 6
+}

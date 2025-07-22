@@ -1,0 +1,12 @@
+{
+  "name": "mika",
+  "purpose": "code",
+  "language": "Python",
+  "created": "1753173169.1987026",
+  "capabilities": [
+    "code_analysis",
+    "docker_generation",
+    "test_creation",
+    "optimization"
+  ]
+}
