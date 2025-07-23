@@ -58,7 +58,7 @@ class Backend:
         self.static_analyzer = StaticAnalyzer()
         self.repo_summarizer = RepoSummarizer()
         
-        print("🚀 1INTERPRETER Backend initialized")
+        print("1INTERPRETER Backend initialized")
     
     def execute_command(self, command: str, argument: str = "") -> Dict[str, Any]:
         """Execute a backend command"""
@@ -109,7 +109,7 @@ class Backend:
             
             return {
                 "success": True,
-                "content": f"✅ Repository cloned and analyzed: {repo_url}\\n{result['summary']}",
+                "content": f"Repository cloned and analyzed: {repo_url}\\n{result['summary']}",
                 "data": result,
                 "repository": repo_url
             }
@@ -128,7 +128,7 @@ class Backend:
             
             return {
                 "success": True,
-                "content": f"🔍 Code analysis completed\\n{result['summary']}",
+                "content": f"Code analysis completed\\n{result['summary']}",
                 "data": result
             }
             
@@ -293,12 +293,26 @@ def main():
     
     # Output result
     if args.json:
-        print(json.dumps(result, indent=2))
+        print(json.dumps(result, indent=2, ensure_ascii=False).encode('utf-8', errors='replace').decode('utf-8', errors='replace'))
     else:
         if result["success"]:
-            print(result["content"])
+            # Handle Unicode encoding issues
+            content = result.get("content", "")
+            try:
+                print(content)
+            except UnicodeEncodeError:
+                # Fallback: remove Unicode characters
+                import re
+                clean_content = re.sub(r'[^\x00-\x7F]+', '', content)
+                print(clean_content)
         else:
-            print(f"❌ Error: {result['error']}")
+            error = result.get('error', 'Unknown error')
+            try:
+                print(f"Error: {error}")
+            except UnicodeEncodeError:
+                import re
+                clean_error = re.sub(r'[^\x00-\x7F]+', '', error)
+                print(f"Error: {clean_error}")
             sys.exit(1)
 
 if __name__ == "__main__":

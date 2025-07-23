@@ -40,7 +40,7 @@ class RepoSummarizer:
                 import shutil
                 shutil.rmtree(clone_path)
             
-            print(f"🔄 Cloning repository: {repo_url}")
+            print(f"Cloning repository: {repo_url}")
             repo = git.Repo.clone_from(repo_url, clone_path)
             
             # Analyze repository
@@ -51,12 +51,12 @@ class RepoSummarizer:
             
             execution_time = time.time() - start_time
             
-            summary = f"""📁 Repository Analysis Complete:
-🔗 URL: {repo_url}
-📊 Files: {analysis['file_stats']['total_files']}
-🐍 Python Files: {analysis['file_stats']['python_files']}
-📝 Lines: {analysis['code_stats']['total_lines']}
-⏱️ Time: {execution_time:.2f}s"""
+            summary = f"""Repository Analysis Complete:
+URL: {repo_url}
+Files: {analysis['file_stats']['total_files']}
+Python Files: {analysis['file_stats']['python_files']}
+Lines: {analysis['code_stats']['total_lines']}
+Time: {execution_time:.2f}s"""
             
             return {
                 "success": True,
@@ -72,7 +72,7 @@ class RepoSummarizer:
             return {
                 "success": False,
                 "error": str(e),
-                "summary": f"❌ Repository analysis failed: {str(e)}"
+                "summary": f"Repository analysis failed: {str(e)}"
             }
     
     def _analyze_repository(self, repo_path: Path) -> Dict[str, Any]:

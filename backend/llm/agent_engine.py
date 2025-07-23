@@ -35,7 +35,7 @@ class AgentEngine:
                 with open(agent_file, 'r') as f:
                     agent_data = json.load(f)
                     self.active_agents[agent_data["name"]] = agent_data
-                print(f"📦 Loaded agent: {agent_data['name']}")
+                print(f"Loaded agent: {agent_data['name']}")
             except Exception as e:
                 print(f"❌ Error loading agent {agent_file}: {str(e)}")
     

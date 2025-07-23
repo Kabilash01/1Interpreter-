@@ -30,16 +30,16 @@ class LLMWrapper:
         """Initialize cloud-based AI (Gemini/OpenAI)"""
         if not self.gemini_api_key:
             raise ValueError("GEMINI_API_KEY not found in environment variables")
-        print("🌐 Cloud AI initialized (Gemini)")
+        print("Cloud AI initialized (Gemini)")
     
     def initialize_local(self):
         """Initialize local AI (Ollama/HuggingFace)"""
-        print("🏠 Local AI initialized (Ollama)")
+        print("Local AI initialized (Ollama)")
         # TODO: Add Ollama integration
     
     def initialize_hybrid(self):
         """Initialize hybrid mode (both cloud and local)"""
-        print("🔄 Hybrid AI initialized")
+        print("Hybrid AI initialized")
     
     def generate_response(self, prompt: str, context: str = "", task_type: str = "general") -> Dict[str, Any]:
         """Generate AI response based on prompt and context"""

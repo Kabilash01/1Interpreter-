@@ -43,11 +43,11 @@ class StaticAnalyzer:
             
             execution_time = time.time() - start_time
             
-            summary = f"""🔍 Static Analysis Complete:
-📊 Files: {metrics['file_count']} | Lines: {metrics['line_count']}
-⚠️ Issues: {len(quality_issues)} quality, {len(security_issues)} security
-🧠 AI Insights: Generated recommendations
-⏱️ Time: {execution_time:.2f}s"""
+            summary = f"""Static Analysis Complete:
+Files: {metrics['file_count']} | Lines: {metrics['line_count']}
+Issues: {len(quality_issues)} quality, {len(security_issues)} security
+AI Insights: Generated recommendations
+Time: {execution_time:.2f}s"""
             
             return {
                 "success": True,
